@@ -12,6 +12,14 @@
 				<p>Run a SAML flow with the Curity Identity Server</p>
 				<a class="button" href="/login">Sign in</a>
 			</div>
+			
+			<% if (model.error) { %>
+				<%- include("./partials/error"); -%> 
+			<% } %>
+			
+			<% if (model.isAuthenticated) { %>
+				<%- include("./partials/authenticated"); -%> 
+			<% } %>
 		</div>
 	</body>
 </html>

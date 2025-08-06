@@ -1,8 +1,7 @@
 services:
 
   curity-idsvr:
-    #image: curity/idsvr-unstable:10.4.0-4c26980ee1
-    image: curityprerelease:latest
+    image: curity/idsvr-unstable:10.4.0-cf31556128
     hostname: idsvr
     volumes:
     - ./curity-config.xml:/opt/idsvr/etc/init/curity-config.xml

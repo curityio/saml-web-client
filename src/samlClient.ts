@@ -1,7 +1,6 @@
 
 import {Application, NextFunction, Request, Response} from 'express';
-import fs from 'fs';
-import passport, {AuthenticateOptions, PassportStatic} from 'passport';
+import passport, {AuthenticateOptions} from 'passport';
 import {Profile, SamlConfig, Strategy, VerifiedCallback} from 'passport-saml';
 import {Configuration} from './configuration';
 
@@ -17,7 +16,6 @@ export class SamlClient {
         this.configuration = configuration;
         this.startLogin = this.startLogin.bind(this);
         this.endLogin = this.endLogin.bind(this);
-        this.loginResponseVerifier = this.loginResponseVerifier.bind(this);
     }
 
     /*
@@ -25,17 +23,32 @@ export class SamlClient {
      */
     public initialize(app: Application) {
 
+        passport.serializeUser((user: any, done) => {
+            done(null, user);
+        });
+        passport.deserializeUser((user: any, done) => {
+            done(null, user);
+        });
+
         const options: SamlConfig = {
-            issuer: this.configuration.issuer,
-            //audience: '',
+            
+            // Endpoints
             entryPoint: this.configuration.samlSsoEndpoint,
-            path: this.configuration.callbackUrl,
-            cert: fs.readFileSync(this.configuration.signingCertPath, 'utf-8'),
-            protocol: 'http://',
+            callbackUrl: this.configuration.callbackUrl,
+            
+            // The issuer to send in requests, the audience to check in responses and crypto verification details
+            issuer: this.configuration.entityId,
+            audience: this.configuration.entityId,
+            cert: this.configuration.assertionVerificationCertificate,
+            signatureAlgorithm: 'sha256',
+
+            // This example forces a login on evert redirect
+            forceAuthn: true,
         };
 
-        passport.use(new Strategy(options, this.loginResponseVerifier));
+        passport.use(new Strategy(options, this.receiveUserAttributes));
         app.use(passport.initialize());
+        app.use(passport.session());
     }
 
     /*
@@ -43,13 +56,8 @@ export class SamlClient {
      */
     public startLogin(request: Request, response: Response, next: NextFunction) {
 
-        const returnUrl = request.query.returnTo;
-        request.query.RelayState = returnUrl;
-
         const options: AuthenticateOptions = {
-            failureRedirect: '/error',
-            failureFlash: true,
-            //successRedirect: (request.query.returnTo as string) || '/',
+            successRedirect: '/',
         };
 
         const middleware = passport.authenticate('saml', options);
@@ -62,26 +70,20 @@ export class SamlClient {
     public endLogin(request: Request, response: Response, next: NextFunction) {
 
         const options: AuthenticateOptions = {
-            failureRedirect: '/error',
-            failureFlash: true,
+            successRedirect: '/',
         };
         
-        console.log('endLoginStart');
         const middleware = passport.authenticate('saml', options);
         middleware(request, response, next);
-        console.log('endLoginEnd');
-        
-        const returnUrl = request.body.RelayState as string;
-        response.redirect(returnUrl || '/');
     }
 
     /*
-     * Process the response assertion and update the session
+     * Receive user attributes after the SAML library has validated the assertion
      */
-    private loginResponseVerifier(profile: Profile | null | undefined, done: VerifiedCallback): any {
+    private receiveUserAttributes(profile: Profile | null | undefined, done: VerifiedCallback): any {
 
         if (!profile) {
-            return done(new Error('profile missing'), {});
+            return done(new Error('The profile is missing in getUser'), {});
         }
 
         const user = {
@@ -90,10 +92,9 @@ export class SamlClient {
             displayName: profile['http://schemas.microsoft.com/identity/claims/displayname'],
             firstName: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'],
             lastName: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname'],
-            assertionXml: profile.getAssertionXml!(),
+            assertionXml: profile.getAssertion!(),
         };
        
-        console.log(JSON.stringify(user, null, 2));
         return done(null, user);
     }
 }
