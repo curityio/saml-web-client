@@ -1,0 +1,15 @@
+services:
+
+  curity-idsvr:
+    #image: curity/idsvr-unstable:10.4.0-4c26980ee1
+    image: curityprerelease:latest
+    hostname: idsvr
+    volumes:
+    - ./curity-config.xml:/opt/idsvr/etc/init/curity-config.xml
+    ports:
+    - 6749:6749
+    - 8443:8443
+    environment:
+      ADMIN: 'true'
+      LICENSE_KEY: '${LICENSE_KEY}'
+      LOGGING_LEVEL: 'DEBUG'
