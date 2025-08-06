@@ -5,19 +5,19 @@ import {Request, Response} from 'express';
  */
 export function renderView(request: Request, response: Response) {
 
-    // Include authenticated user information in the model
+    // Add authenticated user information to the model
     const model: any = {
         isAuthenticated: request.isAuthenticated(),
         user: request.user || null,
         error: null,
     };
     
-    // Provide error information in the model
-    const errorData = (request.session as any)?.error;
+    // Add error information to the model
+    const errorData = (request.session as any)?.error as string;
     if (errorData) {
         model.error = JSON.parse(errorData);
     }
     
-    // Provide the model to the view, to control the partial views it renders
+    // Provide the model to the view, which uses data to control the partial views it renders
     response.render('index', { model });
 }

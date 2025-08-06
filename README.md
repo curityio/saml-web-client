@@ -39,4 +39,4 @@ See the following related information for SAML and the Curity Identity Server:
 
 - [SAML Website Code Example](https://curity.io/resources/learn/saml-web-client/)
 - [Integrate a SAML Web Application](https://curity.io/resources/learn/saml-integration/)
-- [Use SAML and OAuth Together](https://curity.io/resources/learn/saml-and-oauth/)
+- [Migrate from Legacy Application Security](https://curity.io/resources/learn/migrate-legacy-application-security/)

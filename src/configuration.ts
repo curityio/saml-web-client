@@ -4,21 +4,23 @@
 export class Configuration {
 
     public port: string;
-    public useHttps: boolean;
     public entityId: string;
     public samlSsoEndpoint: string;
     public callbackUrl: string;
-    public cookieEncryptionKey: string;
+    public cookieSecret: string;
     public assertionVerificationCertificate: string;
 
     public constructor() {
         this.port = this.getValue('PORT');
-        this.useHttps = this.getValue('HTTPS') !== 'false';
+        this.callbackUrl = this.getValue('CALLBACK_URL');
         this.entityId = this.getValue('ENTITY_ID');
         this.samlSsoEndpoint = this.getValue('SAML_SSO_ENDPOINT');
-        this.callbackUrl = this.getValue('CALLBACK_URL');
-        this.cookieEncryptionKey = this.getValue('COOKIE_ENCRYPTION_KEY');
+        this.cookieSecret = this.getValue('COOKIE_SECRET');
         this.assertionVerificationCertificate = this.getValue('ASSERTION_VERIFICATION_CERTIFICATE');
+    }
+
+    public isHttps(): boolean {
+        return this.callbackUrl.toLowerCase().startsWith('https:');
     }
 
     private getValue(name: string): string {

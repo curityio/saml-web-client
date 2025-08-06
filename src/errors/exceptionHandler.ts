@@ -8,27 +8,13 @@ export class ExceptionHandler {
 
     public constructor() {
         this.onException = this.onException.bind(this);
-        this.onNotFound = this.onNotFound.bind(this);
     }
 
     public async onException(exception: any, request: Request, response: Response, next: NextFunction) {
         
         const data: AppError = {
-            status: 500,
             code: 'server_error',
             message: exception.message || 'Server problem encountered',
-        };
-        
-        this.logError(request, data);
-        response.redirect('/');
-    }
-
-    public async onNotFound(request: Request, response: Response, next: NextFunction) {
-        
-        const data: AppError = {
-            status: 404,
-            code: 'invalid_path',
-            message: 'Application path not found',
         };
         
         this.logError(request, data);

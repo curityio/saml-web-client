@@ -1,7 +1,6 @@
-import cookieParser from 'cookie-parser';
 import {Application} from 'express';
 import session, {CookieOptions, SessionOptions} from 'express-session';
-import {Configuration} from './configuration';
+import {Configuration} from '../configuration';
 
 /*
  * Set up a cookie based session with backend storage
@@ -19,18 +18,17 @@ export class CookieHandler {
         const cookieOptions: CookieOptions = {
             httpOnly: true,
             sameSite: 'strict',
-            secure: this.configuration.useHttps,
+            secure: this.configuration.isHttps(),
             path: '/',
         };
         
         const sessionOptions: SessionOptions = {
             resave: true,
             saveUninitialized: true,
-            secret: this.configuration.cookieEncryptionKey,
+            secret: this.configuration.cookieSecret,
             cookie: cookieOptions,
         };
         
-        app.use(cookieParser());
         app.use(session(sessionOptions));
     }
 }

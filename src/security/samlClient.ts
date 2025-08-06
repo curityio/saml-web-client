@@ -2,7 +2,7 @@
 import {Application, NextFunction, Request, Response} from 'express';
 import passport, {AuthenticateOptions} from 'passport';
 import {Profile, SamlConfig, Strategy, VerifiedCallback} from 'passport-saml';
-import {Configuration} from './configuration';
+import {Configuration} from '../configuration';
 
 /*
  * Encapsulate SAML operations
@@ -40,9 +40,8 @@ export class SamlClient {
             issuer: this.configuration.entityId,
             audience: this.configuration.entityId,
             cert: this.configuration.assertionVerificationCertificate,
-            signatureAlgorithm: 'sha256',
 
-            // This example forces a login on evert redirect
+            // This example forces a login on every redirect
             forceAuthn: true,
         };
 
@@ -57,6 +56,7 @@ export class SamlClient {
     public startLogin(request: Request, response: Response, next: NextFunction) {
 
         const options: AuthenticateOptions = {
+            passReqToCallback: true,
             successRedirect: '/',
         };
 
@@ -70,6 +70,7 @@ export class SamlClient {
     public endLogin(request: Request, response: Response, next: NextFunction) {
 
         const options: AuthenticateOptions = {
+            passReqToCallback: true,
             successRedirect: '/',
         };
         
@@ -83,18 +84,17 @@ export class SamlClient {
     private receiveUserAttributes(profile: Profile | null | undefined, done: VerifiedCallback): any {
 
         if (!profile) {
-            return done(new Error('The profile is missing in getUser'), {});
+            return done(new Error('The profile is missing in receiveUserAttributes'), {});
         }
 
         const user = {
             id: profile['nameID'],
-            email: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'],
-            displayName: profile['http://schemas.microsoft.com/identity/claims/displayname'],
             firstName: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'],
             lastName: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname'],
-            assertionXml: profile.getAssertion!(),
+            email: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'],
+            assertion: profile.getAssertion!(),
         };
-       
+
         return done(null, user);
     }
 }

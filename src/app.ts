@@ -1,10 +1,10 @@
 import express from 'express';
 import path from 'path';
 import {Configuration} from './configuration.js';
-import {CookieHandler} from './cookieHandler.js';
-import {ExceptionHandler} from './exceptionHandler.js';
-import {SamlClient} from './samlClient.js';
+import {ExceptionHandler} from './errors/exceptionHandler.js';
 import {renderView} from './routes/index.js';
+import {CookieHandler} from './security/cookieHandler.js';
+import {SamlClient} from './security/samlClient.js';
 
 /*
  * Base setup
@@ -48,7 +48,6 @@ app.post('/login/callback', samlClient.endLogin);
  * Handle errors
  */
 const exceptionHandler = new ExceptionHandler();
-app.use(exceptionHandler.onNotFound);
 app.use(exceptionHandler.onException);
 
 /*
