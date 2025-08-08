@@ -20,6 +20,12 @@ if [ "$LICENSE_KEY" == '' ]; then
 fi
 
 #
+# Force a teardown of postgres data so that on each install users must be created
+#
+rm -rf data
+mkdir data
+
+#
 # Then run the deployment
 #
 docker compose up

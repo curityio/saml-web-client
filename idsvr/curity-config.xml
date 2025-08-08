@@ -1,6 +1,7 @@
 <config xmlns="http://tail-f.com/ns/config/1.0">
   <environments xmlns="https://curity.se/ns/conf/base">
     <environment>
+      <base-url>http://localhost:8443</base-url>
       <admin-service>
         <http>
           <ssl-server-keystore>default-admin-ssl-key</ssl-server-keystore>
@@ -115,7 +116,48 @@
             <redirect/>
             <post/>
           </request-bindings>
-          <issuer-override>curity-issuer</issuer-override>
+          <attributes>
+            <attribute>
+              <name>email</name>
+              <value-provided-by>attribute-provider</value-provided-by>
+              <transformation>
+                <input-attribute-names>email</input-attribute-names>
+                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoJyoqKiBSRVNPTFZJTkcgRU1BSUwgKioqJyk7CiAgcmV0dXJuIGF0dHJpYnV0ZXNbImVtYWlsIl07Cn0=</value-transformation-procedure>
+              </transformation>
+            </attribute>
+            <attribute>
+              <name>family_name</name>
+              <value-provided-by>attribute-provider</value-provided-by>
+              <transformation>
+                <input-attribute-names>family_name</input-attribute-names>
+                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoJyoqKiBSRVNPTFZJTkcgRkFNSUxZIE5BTUUgKioqJykKICByZXR1cm4gJ0FCQyc7IC8vYXR0cmlidXRlc1siZmFtaWx5X25hbWUiXTsKfQ==</value-transformation-procedure>
+              </transformation>
+            </attribute>
+            <attribute>
+              <name>given_name</name>
+              <value-provided-by>attribute-provider</value-provided-by>
+              <transformation>
+                <input-attribute-names>given_name</input-attribute-names>
+                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoJyoqKiBSRVNPTFZJTkcgR0lWRU4gTkFNRSAqKionKQogIHJldHVybiBhdHRyaWJ1dGVzWyJnaXZlbl9uYW1lIl07Cn0=</value-transformation-procedure>
+              </transformation>
+            </attribute>
+            <attribute>
+              <name>region</name>
+              <value-provided-by>attribute-provider</value-provided-by>
+              <transformation>
+                <input-attribute-names>region</input-attribute-names>
+                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICBsb2dnZXIuZXJyb3IoJyoqKiBSRVNPTFZJTkcgUkVHSU9OICoqKicpOwogIHZhciBkYXRhID0gSlNPTi5wYXJzZShhdHRyaWJ1dGVzWyJkYXRhIl0pOwogIHJldHVybiBkYXRhLnJlZ2lvbjsKfQ==</value-transformation-procedure>
+              </transformation>
+            </attribute>
+            <attribute-value-provider>
+              <id>attribute-provider</id>
+              <data-source-attributes-provider xmlns="https://curity.se/ns/ext-conf/data-source-attributes-provider">
+                <data-source>
+                  <data-source>default-datasource</data-source>
+                </data-source>
+              </data-source-attributes-provider>
+            </attribute-value-provider>
+          </attributes>
           <expose-metadata/>
           <assertion>
             <signing-keystore-id>default-signing-key</signing-keystore-id>
@@ -123,6 +165,14 @@
           <service-providers>
             <service-provider>
               <id>saml-web-client</id>
+              <assertion>
+                <attributes>
+                  <attribute>email</attribute>
+                  <attribute>family_name</attribute>
+                  <attribute>given_name</attribute>
+                  <attribute>region</attribute>
+                </attributes>
+              </assertion>
               <request-bindings>
                 <redirect/>
               </request-bindings>
@@ -421,12 +471,13 @@
       <data-source>
         <id>default-datasource</id>
         <jdbc xmlns="https://curity.se/ns/ext-conf/jdbc">
-          <connection-string>data:text/plain;aes,v:S.WjhLVXBvNVVxMHJXcVNOYw==.7M9PW8WilMRJeachzQARgQ==.N1ThkLcR2JneRtvS3UmQa1a9X00dVarT6iI6izlpOFBkYnexP65hkFNpUg9eqH5g9xKxcAYXvcXqIuivzL9qchjhicBW2esHIcEeheyC28c0koDUQPRcp0DXd0ahklZv.g1msj5v8nk_tk6ZqAEF9KuVfwjaHS6ZKUlALI9wh9v0=</connection-string>
+          <attribute-query>SELECT * from accounts WHERE username = :subject</attribute-query>
+          <connection-string>data:text/plain;aes,v:S.Q044OU1MTGRMcmdTRnZIaQ==.M6XBVbvL03vbxsU6EZ-5XQ==.fMLynOo3nZa2shTkT82h4QELJZEp-ppWXMzPEcQhUwwQOCMHnJn1Cibm4TpPYrUN.jkLNQaSPfU1rVzUjrh-J0ApRuXjj5FbqZ96FABF7V98=</connection-string>
           <standard-credentials-mode>
           </standard-credentials-mode>
-          <driver>org.hsqldb.jdbc.JDBCDriver</driver>
-          <password>data:text/plain;aes,v:S.aFd3c0hJUW1BZHA3b0tBQw==.H7ySafxnhhyZMitlok4BTQ==.9SnCCmxIdtLq5ljGOh6tJw==.0JrDGndE0UU0PnRqfWTgO2k43ay6KRU84HBeY12EAy0=</password>
-          <username>SA</username>
+          <driver>org.postgresql.Driver</driver>
+          <password>data:text/plain;aes,v:S.OVBnMzRIVDhKU3p1UUlSYQ==.ag-imSlWu45XTvP9GSxDZA==.59VfaANm2VJ_TbmSm5JGEw==.MiU7IEBczdA4-li__UvH_BnudqHw-ywu12mKaNgCUQo=</password>
+          <username>postgres</username>
         </jdbc>
       </data-source>
     </data-sources>

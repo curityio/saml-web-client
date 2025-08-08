@@ -34,13 +34,12 @@ export class SamlClient {
         const options: SamlConfig = {
             
             // The client details
-            issuer: this.configuration.appEntityId,
+            issuer: this.configuration.entityId,
             entryPoint: this.configuration.samlSsoEndpoint,
             callbackUrl: this.configuration.callbackUrl,
             
-            // Details in received SAML assertions
-            idpIssuer: this.configuration.issuerEntityId,
-            audience: this.configuration.appEntityId,
+            // Details used to validate received SAML assertions
+            audience: this.configuration.entityId,
             cert: this.configuration.assertionVerificationCertificate,
 
             // This example forces a login on every redirect
@@ -89,11 +88,17 @@ export class SamlClient {
             return done(new Error('An invalid SAML response was received'), {});
         }
 
-        if (profile.issuer !== this.configuration.issuerEntityId) {
-            throw new Error('SAML assertion issuer mismatch');
-        }
+        // Create an application object with the user ID and any custom attributes configured in the Curity Identity Server
+        const user = {
+            nameID: profile['nameID'],
+            attributes: profile.attributes || [],
+        };
 
-        console.log(JSON.stringify(profile, null, 2));
-        return done(null, profile);
+        console.log(profile.attributes);
+
+        // View the underlying assertion if required
+        // console.log(profile.getAssertion()),
+
+        return done(null, user);
     }
 }

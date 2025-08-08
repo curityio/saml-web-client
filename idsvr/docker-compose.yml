@@ -1,7 +1,10 @@
 services:
 
+  #
+  # The Curity Identity Server with a SAML configuration
+  #
   curity-idsvr:
-    image: curity/idsvr-unstable:10.4.0-8bb963f95b
+    image: curity/idsvr-unstable:10.4.0-e7cce9a23d
     hostname: idsvr
     volumes:
     - ./curity-config.xml:/opt/idsvr/etc/init/curity-config.xml
@@ -11,4 +14,18 @@ services:
     environment:
       ADMIN: 'true'
       LICENSE_KEY: '${LICENSE_KEY}'
-      LOGGING_LEVEL: 'DEBUG'
+      LOGGING_LEVEL: 'INFO'
+
+  #
+  # A SQL database with which to query data to issue to assertions
+  #
+  curity-data:
+    image: postgres:17.4
+    hostname: dbserver
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./data-backup.sql:/docker-entrypoint-initdb.d/data-backup.sql
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'Password1'
+      POSTGRES_DB: 'idsvr'

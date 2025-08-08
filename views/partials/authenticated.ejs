@@ -7,7 +7,12 @@
 <div class='container'>
     <h2>User Attributes</h2>
     <p>The web application receives user attributes in a signed assertion from the Curity Identity Server</p>
-    <p class='alert alert-success'>User ID is <%= model.user.id %></p>
+    <ul class='list-group'>
+        <li  class="list-group-item">nameID: <%=model.user.nameID %></li>
+        <% for (const key in model.user.attributes) { %>
+            <li  class="list-group-item"><%= key %>: <%= model.user.attributes[key] %></li>
+        <% } %>
+    </ul>
     <hr/>
 </div>
 <div class='container'>
