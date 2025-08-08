@@ -122,7 +122,7 @@
               <value-provided-by>attribute-provider</value-provided-by>
               <transformation>
                 <input-attribute-names>email</input-attribute-names>
-                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoJyoqKiBSRVNPTFZJTkcgRU1BSUwgKioqJyk7CiAgcmV0dXJuIGF0dHJpYnV0ZXNbImVtYWlsIl07Cn0=</value-transformation-procedure>
+                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoIioqKiBSRVNPTFZJTkcgRU1BSUwgKioqIik7CiAgcmV0dXJuIGF0dHJpYnV0ZXNbImVtYWlsIl07Cn0=</value-transformation-procedure>
               </transformation>
             </attribute>
             <attribute>
@@ -130,7 +130,7 @@
               <value-provided-by>attribute-provider</value-provided-by>
               <transformation>
                 <input-attribute-names>family_name</input-attribute-names>
-                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoJyoqKiBSRVNPTFZJTkcgRkFNSUxZIE5BTUUgKioqJykKICByZXR1cm4gJ0FCQyc7IC8vYXR0cmlidXRlc1siZmFtaWx5X25hbWUiXTsKfQ==</value-transformation-procedure>
+                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoIioqKiBSRVNPTFZJTkcgRkFNSUxZIE5BTUUgKioqIikKICByZXR1cm4gIkZBTSI7IC8vYXR0cmlidXRlc1siZmFtaWx5X25hbWUiXTsKfQ==</value-transformation-procedure>
               </transformation>
             </attribute>
             <attribute>
@@ -138,7 +138,7 @@
               <value-provided-by>attribute-provider</value-provided-by>
               <transformation>
                 <input-attribute-names>given_name</input-attribute-names>
-                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoJyoqKiBSRVNPTFZJTkcgR0lWRU4gTkFNRSAqKionKQogIHJldHVybiBhdHRyaWJ1dGVzWyJnaXZlbl9uYW1lIl07Cn0=</value-transformation-procedure>
+                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoIioqKiBSRVNPTFZJTkcgR0lWRU4gTkFNRSAqKioiKQogIHJldHVybiAiR0lWIjsKfQ==</value-transformation-procedure>
               </transformation>
             </attribute>
             <attribute>
@@ -146,7 +146,7 @@
               <value-provided-by>attribute-provider</value-provided-by>
               <transformation>
                 <input-attribute-names>region</input-attribute-names>
-                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICBsb2dnZXIuZXJyb3IoJyoqKiBSRVNPTFZJTkcgUkVHSU9OICoqKicpOwogIHZhciBkYXRhID0gSlNPTi5wYXJzZShhdHRyaWJ1dGVzWyJkYXRhIl0pOwogIHJldHVybiBkYXRhLnJlZ2lvbjsKfQ==</value-transformation-procedure>
+                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICBsb2dnZXIuZXJyb3IoIioqKiBSRVNPTFZJTkcgUkVHSU9OICoqKiIpOwogIC8vdmFyIGRhdGEgPSBKU09OLnBhcnNlKGF0dHJpYnV0ZXNbImRhdGEiXSk7CiAgLy9yZXR1cm4gZGF0YS5yZWdpb247CiAgcmV0dXJuICJSRUciOwp9</value-transformation-procedure>
               </transformation>
             </attribute>
             <attribute-value-provider>

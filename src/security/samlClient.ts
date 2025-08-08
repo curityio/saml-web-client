@@ -94,7 +94,9 @@ export class SamlClient {
             attributes: profile.attributes || [],
         };
 
-        console.log(profile.attributes);
+        user.attributes['given_name'] = 'Demo';
+        user.attributes['family_name'] = 'User';
+        user.attributes['region'] = 'USA';
 
         // View the underlying assertion if required
         // console.log(profile.getAssertion()),

@@ -4,7 +4,9 @@
 [![Availability](https://img.shields.io/badge/availability-source-blue)](https://curity.io/resources/code-examples/status/)
 
 A minimal web client that uses SAML to authenticate users at the Curity Identity Server.\
-The example also demonstrates an approach to migrate from older identity systems.
+The app can use advanced authentication features and receives SAML assertions with user attriburtes.
+
+![SAML app](app.png)
 
 ## How to Run the Code Example
 
@@ -24,17 +26,20 @@ export LICENSE_FILE_PATH=~/Desktop/license-trial.json
 
 Sign in to the Admin UI at `https://localhost:6749/admin` with credentials `admin / Password1`.\
 Use the facilities menu to export the certificate of the default signing key.\
-Save it to the root folder of the project with the name `default-signing-key.pem`.
+Save it to the root folder of this project with the name `default-signing-key.pem`.
 
 ### Run the Web Application
 
-Next, run the web application and authenticate using a SAML flow.\
-The app does SAML logins, renders user attributes, issues cookies and does a SAML logout.
+Next, run the web application with the following commands:
 
 ```bash
 npm install
 npm start
 ```
+
+Open the browser at `http://localhost:3000` and sign in as the pre-shipped user `demouser / Password1`.\
+The app does a SAML login and receives a signed assertion with user attributes.\
+The app then issues cookies and runs a web session that can use user attributes for authorization.
 
 ## Further Information
 
