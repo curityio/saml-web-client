@@ -3,6 +3,7 @@ import path from 'path';
 import {Configuration} from './configuration.js';
 import {ExceptionHandler} from './errors/exceptionHandler.js';
 import {renderView} from './routes/index.js';
+import {handleLogout} from './routes/logout.js'
 import {CookieHandler} from './security/cookieHandler.js';
 import {SamlClient} from './security/samlClient.js';
 
@@ -34,15 +35,17 @@ const samlClient = new SamlClient(configuration);
 samlClient.initialize(app);
 
 /*
- * Render the application's single view
+ * Render web resources and the application's single view
  */
+app.use(express.static(path.join(dirname, 'public')));
 app.get('/', renderView);
 
 /*
- * Implement SAML flows
+ * Implement SAML flows and a simple logout
  */
 app.get('/login', samlClient.startLogin);
 app.post('/login/callback', samlClient.endLogin);
+app.get('/logout', handleLogout);
 
 /*
  * Handle errors

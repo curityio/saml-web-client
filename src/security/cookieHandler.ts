@@ -15,11 +15,15 @@ export class CookieHandler {
 
     public initialize(app: Application) {
 
+        const sessionTimeInHours = 1;
+        const sessionTimeInMilliseconds = sessionTimeInHours * 60 * 60 * 1000;
+        
         const cookieOptions: CookieOptions = {
             httpOnly: true,
             sameSite: 'strict',
             secure: this.configuration.isHttps(),
             path: '/',
+            maxAge: sessionTimeInMilliseconds,
         };
         
         const sessionOptions: SessionOptions = {

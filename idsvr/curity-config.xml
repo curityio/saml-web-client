@@ -115,6 +115,7 @@
             <redirect/>
             <post/>
           </request-bindings>
+          <issuer-override>curity-issuer</issuer-override>
           <expose-metadata/>
           <assertion>
             <signing-keystore-id>default-signing-key</signing-keystore-id>

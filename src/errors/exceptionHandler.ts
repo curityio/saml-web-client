@@ -1,5 +1,4 @@
 import {NextFunction, Request, Response} from 'express';
-import {AppError} from './appError.js';
 
 /*
  * Intercept errors to productively troubleshoot SAML and other errors
@@ -12,18 +11,13 @@ export class ExceptionHandler {
 
     public async onException(exception: any, request: Request, response: Response, next: NextFunction) {
         
-        const data: AppError = {
-            code: 'server_error',
-            message: exception.message || 'Server problem encountered',
-        };
-        
-        this.logError(request, data);
+        this.logError(request, exception.message || 'Server problem encountered');
         response.redirect('/');
     }
 
-    private async logError(request: Request, data: AppError) {
+    private async logError(request: Request, message: string) {
         
-        (request.session as any).error = JSON.stringify(data);
+        (request.session as any).errorMessage = message;
         
         await new Promise<void>((resolve) => {
             request.session.save((err: any) => {
@@ -31,6 +25,6 @@ export class ExceptionHandler {
             });
         });
 
-        console.log(JSON.stringify(data, null, 2));
+        console.log(message);
     }
 }

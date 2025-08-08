@@ -1,5 +1,8 @@
 # SAML 2.0 Web Client
 
+[![Quality](https://img.shields.io/badge/quality-demo-red)](https://curity.io/resources/code-examples/status/)
+[![Availability](https://img.shields.io/badge/availability-source-blue)](https://curity.io/resources/code-examples/status/)
+
 A minimal web client that uses SAML to authenticate users at the Curity Identity Server.\
 The example also demonstrates an approach to migrate from older identity systems.
 
@@ -35,8 +38,7 @@ npm start
 
 ## Further Information
 
-See the following related information for SAML and the Curity Identity Server:
+See the following related information for further SAML details:
 
 - [SAML Website Code Example](https://curity.io/resources/learn/saml-web-client/)
 - [Integrate a SAML Web Application](https://curity.io/resources/learn/saml-integration/)
-- [Migrate from Legacy Application Security](https://curity.io/resources/learn/migrate-legacy-application-security/)

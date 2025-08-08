@@ -1,1 +1,18 @@
-<p>User is authenticated: <%= model.user.id %></p>
+<div class='container'>
+    <h2>Authentication Status</h2>
+    <p>The user is authenticated when there is a web session that stores user attributes and a session cookie</p>
+    <p class='alert alert-success'>You are authenticated</p>
+    <hr/>
+</div>
+<div class='container'>
+    <h2>User Attributes</h2>
+    <p>The web application receives user attributes in a signed assertion from the Curity Identity Server</p>
+    <p class='alert alert-success'>User ID is <%= model.user.id %></p>
+    <hr/>
+</div>
+<div class='container'>
+    <h2>Sign Out</h2>
+    <p>The web application ends its session and performs a simple logout</p>
+    <a class='btn btn-primary btn-lg' href='/logout'>Sign Out</a>
+    <hr/>
+</div>

@@ -16,6 +16,7 @@ export class SamlClient {
         this.configuration = configuration;
         this.startLogin = this.startLogin.bind(this);
         this.endLogin = this.endLogin.bind(this);
+        this.receiveUserAttributes = this.receiveUserAttributes.bind(this);
     }
 
     /*
@@ -32,13 +33,14 @@ export class SamlClient {
 
         const options: SamlConfig = {
             
-            // Endpoints
+            // The client details
+            issuer: this.configuration.appEntityId,
             entryPoint: this.configuration.samlSsoEndpoint,
             callbackUrl: this.configuration.callbackUrl,
             
-            // The issuer to send in requests, the audience to check in responses and crypto verification details
-            issuer: this.configuration.entityId,
-            audience: this.configuration.entityId,
+            // Details in received SAML assertions
+            idpIssuer: this.configuration.issuerEntityId,
+            audience: this.configuration.appEntityId,
             cert: this.configuration.assertionVerificationCertificate,
 
             // This example forces a login on every redirect
@@ -79,22 +81,19 @@ export class SamlClient {
     }
 
     /*
-     * Receive user attributes after the SAML library has validated the assertion
+     * Receive user attributes after the SAML library has validated the assertion and implement any custom validations
      */
     private receiveUserAttributes(profile: Profile | null | undefined, done: VerifiedCallback): any {
 
-        if (!profile) {
-            return done(new Error('The profile is missing in receiveUserAttributes'), {});
+        if (!profile || !profile.getAssertion) {
+            return done(new Error('An invalid SAML response was received'), {});
         }
 
-        const user = {
-            id: profile['nameID'],
-            firstName: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'],
-            lastName: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname'],
-            email: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'],
-            assertion: profile.getAssertion!(),
-        };
+        if (profile.issuer !== this.configuration.issuerEntityId) {
+            throw new Error('SAML assertion issuer mismatch');
+        }
 
-        return done(null, user);
+        console.log(JSON.stringify(profile, null, 2));
+        return done(null, profile);
     }
 }

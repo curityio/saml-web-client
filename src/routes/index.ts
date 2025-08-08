@@ -9,13 +9,13 @@ export function renderView(request: Request, response: Response) {
     const model: any = {
         isAuthenticated: request.isAuthenticated(),
         user: request.user || null,
-        error: null,
+        errorMessage: null,
     };
     
     // Add error information to the model
-    const errorData = (request.session as any)?.error as string;
-    if (errorData) {
-        model.error = JSON.parse(errorData);
+    const errorMessage = (request.session as any)?.errorMessage;
+    if (errorMessage) {
+        model.errorMessage = errorMessage;
     }
     
     // Provide the model to the view, which uses data to control the partial views it renders
