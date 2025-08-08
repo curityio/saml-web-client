@@ -1,0 +1,29 @@
+{
+    "name": "saml-web-client",
+    "version": "1.0.0",
+    "description": "An example SAML web client that integrates with the Curity Identity Server",
+    "author": "Curity AB",
+    "license": "Apache-2.0",
+    "main": "app.ts",
+    "type": "module",
+    "engines": {
+        "node": ">=22"
+    },
+    "scripts": {
+        "start": "./start.sh"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.3",
+        "@types/express-session": "^1.18.2",
+        "@types/passport": "^1.0.17",
+        "tsx": "^4.20.3",
+        "typescript": "^5.9.2"
+    },
+    "dependencies": {
+        "ejs": "^3.1.10",
+        "express": "^5.1.0",
+        "express-session": "^1.18.2",
+        "passport": "^0.7.0",
+        "passport-saml": "^3.2.4"
+    }
+}
