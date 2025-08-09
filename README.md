@@ -65,7 +65,7 @@ The app then runs a cookie-based web session and can implement authorization wit
 See the following related information for further details on SAML integrations:
 
 - [SAML Website Code Example](https://curity.io/resources/learn/saml-web-client/)
-- [Integrate a SAML Web Application](https://curity.io/resources/learn/saml-integration/)
+- [Integrate a SAML Web Application](https://curity.io/resources/learn/integrate-saml-web-client/)
 
 ## Further Information
 
