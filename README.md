@@ -7,24 +7,23 @@ A basic web client that uses SAML to authenticate users at the Curity Identity S
 
 ## Security Modernization
 
-The main theme of the code example is to show how to modernize security in existing web applications:
+You can integrate with [existing data sources](DATA.md) and control over user attributes issued to SAML assertions.\
+The example app uses some built-in identity attributes and a custom attribute for the region value.
 
 ![SAML app](app.png)
 
-The app can use all of the Curity Identity Server's modern authentication features:
+Control over user attributes enables business continuity during migrations.\
+Often, a DevOps team can perform a migration with zero or minimal code changes:
 
+- Configure SAML settings in the Curity Identity Server.
+- Update the app's environment variables.
+
+The app can then use all of the Curity Identity Server's modern authentication features:
+
+- Custom themes per application, to provide your preferred login user experience.
 - Built-in authenticators with modern methods like like passkeys and verifiable credentials.
 - Authentication actions that enable detailed control over authentication workflows.
 - An SDK that enable custom authenticators or authentication actions, so that you are never blocked.
-
-Even more importantly, you can take full control over user attributes issued to SAML assertions.\
-The example app uses some built-in identity attributes and a custom attribute for the region value.
-
-Control over user attributes enables business continuity during migrations.\
-An attribute value provider can retrieve [any built-in or custom attribute](ATTRIBUTES.md) from the data source.
-
-The app uses environment variables for its SAML settings.\
-In many cases, a DevOps team can simply change environment variables to migrate to the Curity Identity Server.
 
 ## How to Run the Code Example
 
@@ -60,6 +59,8 @@ npm start
 Open the browser at `http://localhost:3000` and sign in as the pre-shipped user `demouser / Password1`.\
 The app does a SAML login and receives a signed assertion with user attributes.\
 The app then issues cookies, runs a web session and can implement authorization with the assertion's user attributes.
+
+### Query Data
 
 ## Website Documentation
 
