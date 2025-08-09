@@ -4,6 +4,7 @@ services:
   # The Curity Identity Server with a SAML configuration
   #
   curity-idsvr:
+    #image: curity.azurecr.io/curity/idsvr:latest
     image: curity/idsvr-unstable:10.4.0-e7cce9a23d
     hostname: idsvr
     volumes:
@@ -18,7 +19,7 @@ services:
       LOGGING_LEVEL: 'INFO'
 
   #
-  # A SQL database with which to query data to issue to assertions
+  # A SQL database with which to query user attribute to issue to SAML assertions
   #
   curity-data:
     image: postgres:17.4

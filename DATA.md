@@ -1,17 +1,9 @@
 # Data Sources
 
-The Curity Identity Server uses a number of abstractions to connect to data sources:
-
-- [Data Sources](https://curity.io/docs/idsvr/latest/system-admin-guide/data-sources/index.html)
-- [Account Managers](https://curity.io/docs/idsvr/latest/authentication-service-admin-guide/account-managers/index.html)
-- [Credential Managers](https://curity.io/docs/idsvr/latest/system-admin-guide/credential-managers/index.html)
-
 To integrate user accounts and user credentials you can choose one of the following approaches:
 
 - Connect the Curity Identity Server to existing data sources, like LDAP stores.
-- Use [User Management APIs](https://curity.io/resources/learn/managing-users-with-scim/) to migrate user accounts and user credentials to the Curity Identity Server.
-
-It is possible to enable use cases like user migrations that do not require users to reset existing passwords.
+- Use User Management APIs to migrate user accounts and user credentials to the Curity Identity Server.
 
 ## Example Database
 

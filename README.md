@@ -1,29 +1,12 @@
-# SAML 2.0 Web Client
+# SAML 2.0 Website
 
 [![Quality](https://img.shields.io/badge/quality-demo-red)](https://curity.io/resources/code-examples/status/)
 [![Availability](https://img.shields.io/badge/availability-source-blue)](https://curity.io/resources/code-examples/status/)
 
-A basic web client that uses SAML to authenticate users at the Curity Identity Server.
-
-## Security Modernization
-
-You can integrate with [existing data sources](DATA.md) and control user attributes issued to SAML assertions.\
-The example app uses some built-in identity attributes and a custom attribute for the region value.
+A basic website that uses SAML to authenticate users at the Curity Identity Server.\
+The code example demonstrates control over user attributes issued to SAML assertions.
 
 ![SAML app](app.png)
-
-Control over user attributes enables business continuity during migrations.\
-Often, SAML web migrations can be done with the following steps and without requiring development work:
-
-- Configure SAML settings in the Curity Identity Server.
-- Update the app's environment variables.
-
-The app can then use all of the Curity Identity Server's modern authentication features:
-
-- Custom themes per application, to provide your preferred login user experience.
-- Built-in authenticators with modern methods like like passkeys and verifiable credentials.
-- Authentication actions that enable detailed control over authentication workflows.
-- An SDK that enable custom authenticators or authentication actions, so that you are never blocked.
 
 ## How to Run the Code Example
 
@@ -44,8 +27,8 @@ export LICENSE_FILE_PATH=~/Desktop/license-trial.json
 ```
 
 Sign in to the Admin UI at `https://localhost:6749/admin` with credentials `admin / Password1`.\
-Use the facilities menu to export the certificate of the default signing key.\
-Save it to the root folder of this project with the name `default-signing-key.pem`.
+Use the facilities menu to export the certificate of the default signing verification key.\
+Save it to the root folder of this project with the name `default-verification-key.pem`.
 
 ### Run the Web Application
 
@@ -64,8 +47,8 @@ The app then runs a cookie-based web session and can implement authorization wit
 
 See the following related information for further details on SAML integrations:
 
-- [SAML Website Code Example](https://curity.io/resources/learn/saml-web-client/)
-- [Integrate a SAML Web Application](https://curity.io/resources/learn/integrate-saml-web-client/)
+- [SAML Website Code Example](https://curity.io/resources/learn/saml-website/)
+- [Integrate a SAML Web Application](https://curity.io/resources/learn/integrate-saml-website/)
 
 ## Further Information
 
