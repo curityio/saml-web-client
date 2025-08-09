@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" Destination="http://localhost:3000/login/callback" ID="_OwlhgxLEXIJHuIfJ23cLTmztcUPwV7IO" InResponseTo="_c8067db36c7c9c58a150" IssueInstant="2025-08-09T14:24:03.509Z" Version="2.0">
+  <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">http://localhost:8443/saml/sso/metadata</saml:Issuer>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+      <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+      <Reference URI="#_OwlhgxLEXIJHuIfJ23cLTmztcUPwV7IO">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+          <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+        <DigestValue>XVAxdSb+mv5ikyoYHUiYD38VpiOle7FOcGx32CwYuKg=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>A7WGIsfsI/vKx6muNM8c3K2t+1t8T9y12ryokR10nnooAoCBYPPS8jEUfyUTUJXfOzaJPvn1/dCZOHPqc2E4gD7pCiuSFeWZyaVFVU4WIT82zo/H15bBi4aRrjl65gSgJIfYNGawGLhhGkxgl8cMO/zgQjY+/j/5kjvShZZaJZoxwAisA2JETNJSSJaaDBl698PpNxfQDdD5AvO+GX4+E5+oBT6k8ASAVV2G+BpUU18rtuKj4kgEmhh907FHabuom+ed3TSqyvsGrY9L5ltfgodgFSUxiT4CXc666T/2BO6ofziz2dVq+cgtGBUdJCO3RgakMpqj4PZogsCn+wAo/A==</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>MIIDUzCCAjugAwIBAgIJAPbBvB8XrIbbMA0GCSqGSIb3DQEBDAUAMC4xCzAJBgNVBAYTAnNlMQ8wDQYDVQQKEwZjdXJpdHkxDjAMBgNVBAMTBWlkc3ZyMB4XDTI1MDgwNTEwNTIwMVoXDTMwMDgwNDEwNTIwMVowLjELMAkGA1UEBhMCc2UxDzANBgNVBAoTBmN1cml0eTEOMAwGA1UEAxMFaWRzdnIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDXhMaf8oYYp3g3v6DdE/kiN7iRF7ve0FmNFdwlkMpbKtq4ZuqkJBtPexpcwQhfU+hr/GoBDDD3c+T00IbC4bjQtWuJ0TrLmuiRvPjyJlXvtI2jKfrWsTR2WaFU34gBeomH95yE3EyeeLV4NTDPNCOpyly7/NpbotZEjuZWGEXVPU5CqMcoedd7f1wx38EXCpNXf9jhOtNyo9aZz0PA/d+QQG5FS5RZpD1/zLL61dyaYRqJdf4a+UiKDrggW1ToUe6gNQ31d+KXGcl1eSNh38wjzeAQ24QqQ5qJsIepR7N7hsdLNqHpqIz+GLoHraoP0ao+I78nx1jJb0n5Eezm0EIzAgMBAAGjdDByMB0GA1UdDgQWBBRUQoh4gmWYYA5pGT1lk0vDLRr/2TALBgNVHQ8EBAMCBeAwIQYDVR0RBBowGIIFaWRzdnKCCWxvY2FsaG9zdIcEfwAAATAMBgNVHRMBAf8EAjAAMBMGA1UdJQQMMAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEBDAUAA4IBAQAr1AauJs5xLe0Mx+c5JlILb4/pgqGrn6ezgzyi+zJOdZXNjmPqUHpsMKhSfWiEUpntu9mNxqkRM3WZjUAzItQewwia6aApgqpxoXd4miRz2FaZ9JZ37+qbgltj9GGAwok6AUfZY1JiREyyP/rY/oQDrWeu7oTzt1FIq30P2o4P6Y/gBzw34KzyXRl/tNygNaTgumAkwok/Oh8SU4V5xzMpvM7W95A6TvVwslyz/adLHOU6+UUplMn9gOwy19+/yiPjMwCHVht3FkR4P952VYJDjoL3j/mANj2TGPY6K31DtyezrEo4023zY1Fps5rxqSYwCEvEGA9gP+d6Iushmx58</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+  <samlp:Status>
+    <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
+  </samlp:Status>
+  <saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="_qqGbofoUzjmzM3TEpT7mh5OpqXkHY2aq" IssueInstant="2025-08-09T14:24:03.509Z" Version="2.0">
+    <saml:Issuer>http://localhost:8443/saml/sso/metadata</saml:Issuer>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+        <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+        <Reference URI="#_qqGbofoUzjmzM3TEpT7mh5OpqXkHY2aq">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+            <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+          <DigestValue>UuXU3ct5IgGYyGl0W5ZhQB9//qRJiJTg1vjLTJM0TBo=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>QA4duprlFw5OkVFWb8jiJmx6EnQAqiaFfFIP+Y0VXoIgAgs5gzseqFgC4E7VMdB6M3SrMAwLZQZA+R/fvJDKHOl9EdiB8AA8I7Lq6ZvlFnofAZZfnEqb39cqNVbLLpwggQsM+Aqao7flG3+4diT1E40odrUr/Zt+/NpfPxAd6VetF6wAqaYMjOf7vCvPaOyaKBDh1S4ULH0KA4pjyRtsTgMMxUAmuGu95a4UoqrfkFS4Wb4gBb+fO/s2BVh02n4LXTihuNvH9zbVF2NOMLW/lBcF6VzG8IPd2gnACD0tWQmhtk+XTsf4EVkxu5CPSt8rrZ5U7FB6U7dAZNstZIbvPQ==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>MIIDUzCCAjugAwIBAgIJAPbBvB8XrIbbMA0GCSqGSIb3DQEBDAUAMC4xCzAJBgNVBAYTAnNlMQ8wDQYDVQQKEwZjdXJpdHkxDjAMBgNVBAMTBWlkc3ZyMB4XDTI1MDgwNTEwNTIwMVoXDTMwMDgwNDEwNTIwMVowLjELMAkGA1UEBhMCc2UxDzANBgNVBAoTBmN1cml0eTEOMAwGA1UEAxMFaWRzdnIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDXhMaf8oYYp3g3v6DdE/kiN7iRF7ve0FmNFdwlkMpbKtq4ZuqkJBtPexpcwQhfU+hr/GoBDDD3c+T00IbC4bjQtWuJ0TrLmuiRvPjyJlXvtI2jKfrWsTR2WaFU34gBeomH95yE3EyeeLV4NTDPNCOpyly7/NpbotZEjuZWGEXVPU5CqMcoedd7f1wx38EXCpNXf9jhOtNyo9aZz0PA/d+QQG5FS5RZpD1/zLL61dyaYRqJdf4a+UiKDrggW1ToUe6gNQ31d+KXGcl1eSNh38wjzeAQ24QqQ5qJsIepR7N7hsdLNqHpqIz+GLoHraoP0ao+I78nx1jJb0n5Eezm0EIzAgMBAAGjdDByMB0GA1UdDgQWBBRUQoh4gmWYYA5pGT1lk0vDLRr/2TALBgNVHQ8EBAMCBeAwIQYDVR0RBBowGIIFaWRzdnKCCWxvY2FsaG9zdIcEfwAAATAMBgNVHRMBAf8EAjAAMBMGA1UdJQQMMAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEBDAUAA4IBAQAr1AauJs5xLe0Mx+c5JlILb4/pgqGrn6ezgzyi+zJOdZXNjmPqUHpsMKhSfWiEUpntu9mNxqkRM3WZjUAzItQewwia6aApgqpxoXd4miRz2FaZ9JZ37+qbgltj9GGAwok6AUfZY1JiREyyP/rY/oQDrWeu7oTzt1FIq30P2o4P6Y/gBzw34KzyXRl/tNygNaTgumAkwok/Oh8SU4V5xzMpvM7W95A6TvVwslyz/adLHOU6+UUplMn9gOwy19+/yiPjMwCHVht3FkR4P952VYJDjoL3j/mANj2TGPY6K31DtyezrEo4023zY1Fps5rxqSYwCEvEGA9gP+d6Iushmx58</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+    <saml:Subject>
+      <saml:NameID>demouser</saml:NameID>
+    </saml:Subject>
+    <saml:Conditions NotBefore="2025-08-09T14:24:03.509Z" NotOnOrAfter="2025-08-09T15:24:03.509Z">
+      <saml:AudienceRestriction>
+        <saml:Audience>saml-web-client</saml:Audience>
+      </saml:AudienceRestriction>
+    </saml:Conditions>
+    <saml:AuthnStatement AuthnInstant="2025-08-09T14:24:03Z" SessionIndex="7xyXMjTIvmAt5LIH">
+      <saml:AuthnContext>
+        <saml:AuthnContextClassRef>urn:se:curity:authentication:html-form:html-form</saml:AuthnContextClassRef>
+        <saml:AuthenticatingAuthority>http://localhost:8443/saml/sso/metadata</saml:AuthenticatingAuthority>
+      </saml:AuthnContext>
+    </saml:AuthnStatement>
+    <saml:AttributeStatement>
+      <saml:Attribute Name="email" NameFormat="unspecified">
+        <saml:AttributeValue>demo@user.com</saml:AttributeValue>
+      </saml:Attribute>
+    </saml:AttributeStatement>
+    <saml:AttributeStatement>
+      <saml:Attribute Name="family_name" NameFormat="unspecified">
+        <saml:AttributeValue>"User"</saml:AttributeValue>
+      </saml:Attribute>
+    </saml:AttributeStatement>
+    <saml:AttributeStatement>
+      <saml:Attribute Name="given_name" NameFormat="unspecified">
+        <saml:AttributeValue>"Demo"</saml:AttributeValue>
+      </saml:Attribute>
+    </saml:AttributeStatement>
+    <saml:AttributeStatement>
+      <saml:Attribute Name="region" NameFormat="unspecified">
+        <saml:AttributeValue>"USA"</saml:AttributeValue>
+      </saml:Attribute>
+    </saml:AttributeStatement>
+  </saml:Assertion>
+</samlp:Response>
