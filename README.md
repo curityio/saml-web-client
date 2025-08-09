@@ -7,7 +7,7 @@ A basic web client that uses SAML to authenticate users at the Curity Identity S
 
 ## Security Modernization
 
-You can integrate with [existing data sources](DATA.md) and control over user attributes issued to SAML assertions.\
+You can integrate with [existing data sources](DATA.md) and control user attributes issued to SAML assertions.\
 The example app uses some built-in identity attributes and a custom attribute for the region value.
 
 ![SAML app](app.png)
@@ -32,7 +32,7 @@ Use the following commands to run a basic SAML flow on a local computer.
 ### Prerequisites
 
 First, get a license file for the Curity Identity Server with access to the SAML feature.\
-Also make sure that you local computer runs Docker, the OpenSSL tool and the jq tool.
+Also make sure that your local computer runs Docker, the OpenSSL tool and the jq tool.
 
 ### Deploy the Curity Identity Server
 
@@ -57,10 +57,8 @@ npm start
 ```
 
 Open the browser at `http://localhost:3000` and sign in as the pre-shipped user `demouser / Password1`.\
-The app does a SAML login and receives a signed assertion with user attributes.\
-The app then issues cookies, runs a web session and can implement authorization with the assertion's user attributes.
-
-### Query Data
+The app runs a SAML login flow and receives a signed assertion with user attributes.\
+The app then runs a cookie-based web session and can implement authorization with the user attributes.
 
 ## Website Documentation
 

@@ -30,6 +30,7 @@ rm -rf cdb && mkdir cdb
 rm -rf data && mkdir data
 
 #
-# Then run the deployment
+# Get a 10.4 or later image for the Curity Identity Server and then run the deployment
 #
+docker pull curity.azurecr.io/curity/idsvr:latest
 docker compose up
