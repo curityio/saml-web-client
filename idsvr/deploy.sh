@@ -20,10 +20,14 @@ if [ "$LICENSE_KEY" == '' ]; then
 fi
 
 #
-# Force a teardown of postgres data so that on each install users must be created
+# Force recreation of the configuration database
 #
-rm -rf data
-mkdir data
+rm -rf cdb && mkdir cdb
+
+#
+# Force recreation of database data
+#
+rm -rf data && mkdir data
 
 #
 # Then run the deployment

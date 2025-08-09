@@ -122,7 +122,6 @@
               <value-provided-by>attribute-provider</value-provided-by>
               <transformation>
                 <input-attribute-names>email</input-attribute-names>
-                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoIioqKiBSRVNPTFZJTkcgRU1BSUwgKioqIik7CiAgcmV0dXJuIGF0dHJpYnV0ZXNbImVtYWlsIl07Cn0=</value-transformation-procedure>
               </transformation>
             </attribute>
             <attribute>
@@ -130,7 +129,6 @@
               <value-provided-by>attribute-provider</value-provided-by>
               <transformation>
                 <input-attribute-names>family_name</input-attribute-names>
-                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoIioqKiBSRVNPTFZJTkcgRkFNSUxZIE5BTUUgKioqIikKICByZXR1cm4gIkZBTSI7IC8vYXR0cmlidXRlc1siZmFtaWx5X25hbWUiXTsKfQ==</value-transformation-procedure>
               </transformation>
             </attribute>
             <attribute>
@@ -138,7 +136,6 @@
               <value-provided-by>attribute-provider</value-provided-by>
               <transformation>
                 <input-attribute-names>given_name</input-attribute-names>
-                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICAvLyBUcmFuc2Zvcm0gdGhlIGF0dHJpYnV0ZXMgYW5kIHJldHVybiB0aGUgYXBwcm9wcmlhdGUgdmFsdWUgZm9yIHRoZSBhdHRyaWJ1dGUKICBsb2dnZXIuZXJyb3IoIioqKiBSRVNPTFZJTkcgR0lWRU4gTkFNRSAqKioiKQogIHJldHVybiAiR0lWIjsKfQ==</value-transformation-procedure>
               </transformation>
             </attribute>
             <attribute>
@@ -146,7 +143,6 @@
               <value-provided-by>attribute-provider</value-provided-by>
               <transformation>
                 <input-attribute-names>region</input-attribute-names>
-                <value-transformation-procedure>ZnVuY3Rpb24gdHJhbnNmb3JtKGF0dHJpYnV0ZXMpIHsKICBsb2dnZXIuZXJyb3IoIioqKiBSRVNPTFZJTkcgUkVHSU9OICoqKiIpOwogIC8vdmFyIGRhdGEgPSBKU09OLnBhcnNlKGF0dHJpYnV0ZXNbImRhdGEiXSk7CiAgLy9yZXR1cm4gZGF0YS5yZWdpb247CiAgcmV0dXJuICJSRUciOwp9</value-transformation-procedure>
               </transformation>
             </attribute>
             <attribute-value-provider>
@@ -471,7 +467,7 @@
       <data-source>
         <id>default-datasource</id>
         <jdbc xmlns="https://curity.se/ns/ext-conf/jdbc">
-          <attribute-query>SELECT * from accounts WHERE username = :subject</attribute-query>
+          <attribute-query>SELECT *, attributes->'name'->'givenName' as given_name, attributes->'name'->'familyName' as family_name, attributes->'region' as region from accounts WHERE username = :subject</attribute-query>
           <connection-string>data:text/plain;aes,v:S.Q044OU1MTGRMcmdTRnZIaQ==.M6XBVbvL03vbxsU6EZ-5XQ==.fMLynOo3nZa2shTkT82h4QELJZEp-ppWXMzPEcQhUwwQOCMHnJn1Cibm4TpPYrUN.jkLNQaSPfU1rVzUjrh-J0ApRuXjj5FbqZ96FABF7V98=</connection-string>
           <standard-credentials-mode>
           </standard-credentials-mode>
