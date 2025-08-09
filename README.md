@@ -13,7 +13,7 @@ The example app uses some built-in identity attributes and a custom attribute fo
 ![SAML app](app.png)
 
 Control over user attributes enables business continuity during migrations.\
-Often, a DevOps team can perform a migration with zero or minimal code changes:
+Often, SAML web migrations can be done with the following steps and without requiring development work:
 
 - Configure SAML settings in the Curity Identity Server.
 - Update the app's environment variables.
