@@ -40,6 +40,7 @@ export class SamlClient {
             
             // Details used to validate received SAML assertions
             audience: this.configuration.entityId,
+            identifierFormat: null,
             cert: this.configuration.assertionVerificationCertificate,
 
             // This example forces a login on every redirect

@@ -18,9 +18,10 @@ export class CookieHandler {
         const sessionTimeInHours = 1;
         const sessionTimeInMilliseconds = sessionTimeInHours * 60 * 60 * 1000;
         
+        // Use the lax setting since cookies so that cookies stick when set in a redirect response
         const cookieOptions: CookieOptions = {
             httpOnly: true,
-            sameSite: 'strict',
+            sameSite: 'lax',
             secure: this.configuration.isHttps(),
             path: '/',
             maxAge: sessionTimeInMilliseconds,
