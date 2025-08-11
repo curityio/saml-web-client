@@ -19,15 +19,14 @@ services:
       LOGGING_LEVEL: 'INFO'
 
   #
-  # A SQL database with which to query user attribute to issue to SAML assertions
+  # A SQL database that contains user account with user attribute issued to SAML assertions
   #
   curity-data:
-    image: postgres:17.4
+    image: curity_mssql:1.0.0
     hostname: dbserver
     volumes:
-      - ./data:/var/lib/postgresql/data
-      - ./data-backup.sql:/docker-entrypoint-initdb.d/data-backup.sql
+    - ./mssql-data:/var/opt/mssql/data
     environment:
-      POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: 'Password1'
-      POSTGRES_DB: 'idsvr'
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: Password1
+      MSSQL_COLLATION: Latin1_General_100_CI_AS_SC_UTF8

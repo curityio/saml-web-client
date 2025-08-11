@@ -14,7 +14,7 @@
       <services>
         <zones>
           <default-zone>
-            <symmetric-key>data:text/plain;aes,v:S.ZjZ0c0dLOWtNYjlpTlZaNA==.gsBuj6qn7J6eQ6k73TJbNw==.IG_2Csvfe3q8zjl7Z8eNPVIvMEh8pdAaoTonjb367dYH9wQXiHEbc5DmrSa05_et1TD6IwuE4alWJZwX9Pkx5P423fRuQaxvd8MWMG_4FyQ=.asfvatWi2_qUYZoNTMniK85bYyoj5b8Bp3HYy3j_Lxk=</symmetric-key>
+            <symmetric-key>data:text/plain;aes,v:S.ZWhUeTJMS3FjWnVTMHNNbA==.bBljORtkUx523hDFexqXGA==.tGDnM92Bz-TQaOplf1oCYnyUzPcLubqwUA_WJuyU5-FfQWIOvGdIAAG4ZNAG_Wc0CQByYJnh6yGMmAue-WUbq5QNu7394ky4rQw2HBNevrs=.Zhe_bOl86jr7N3kqbMfua2AGZ6cnmmvgoMYAY_qWUMU=</symmetric-key>
           </default-zone>
         </zones>
         <service-role>
@@ -467,7 +467,7 @@
       <data-source>
         <id>default-datasource</id>
         <jdbc xmlns="https://curity.se/ns/ext-conf/jdbc">
-          <attribute-query>SELECT *, JSON_VALUE(attributes, '$.name.givenName') as given_name, JSON_VALUE(attributes, '$.name.familyName') as family_name, JSON_VALUE(attributes, '$.region') as region from accounts WHERE username = :subject</attribute-query>
+          <attribute-query>SELECT *, attributes->'name'->'givenName' as given_name, attributes->'name'->'familyName' as family_name, attributes->'region' as region from accounts WHERE username = :subject</attribute-query>
           <connection-string>data:text/plain;aes,v:S.SVlJQ2thcWtJSURCOHVSOQ==.VtFU-_gT3yZAAC_HXxc9rw==.5UfMaCQ8J4t-cAg33VXB6zueT3zD-g3kTspHxP1AH0zf-gZ6GPUEaWOJ0jxANq_O12m6jt70sGizh6vzB9DMm0da0Q7F0jmZ18jBGrm52lpPq9i5kx5MkhAe2mkmzM9RAXbhjiqPJwkzyzQhfAofPw==.j0ouzzIhtVR17H4-eGnxxtgZF5f3cq4IJY_rrxtIbCo=</connection-string>
           <standard-credentials-mode>
           </standard-credentials-mode>
@@ -504,7 +504,7 @@
     </caching-services>
   </facilities>
   <processing xmlns="https://curity.se/ns/conf/base">
-    <license-key>#{LICENSE_KEY}</license-key>
+    <license-key tags=" I3tMSUNFTlNFX0tFWX0= ">eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDdXJpdHkgQUIiLCJzdWIiOiJDdXJpdHkgRGV2ZWxvcG1lbnQiLCJJZCI6IkxTNFNHenNKQUVtOUplS1BwQlRIVmprbHQ3SFhBbGVuIiwiUHJvZHVjdCI6IklkZW50aXR5IFNlcnZlciIsIlZlcnNpb24iOiI0LjAiLCJUaWVyIjoiU3Vic2NyaXB0aW9uIiwiR3JhY2UgUGVyaW9kIjoiNDUiLCJJc3N1ZSBEYXRlIjoiMjAyNC0xMi0xMiIsIkV4cGlyYXRpb24gRGF0ZSI6IjIwMjUtMTItMTIiLCJFZGl0aW9uIjoiQ3VzdG9tIiwiR3JvdXBzIjoiMyIsIkVudmlyb25tZW50IjoiVGVzdGluZyBDdXJpdHkgRGV2IiwiVHlwZSI6Ik5vbi1Qcm9kdWN0aW9uIiwiRmVhdHVyZXMiOlt7ImZlYXR1cmUiOiJwcm9maWxlcyIsInJlc3RyaWN0aW9ucyI6WyJhdXRoOmF1dGhlbnRpY2F0aW9uLXNlcnZpY2UiLCJhczpvYXV0aC1zZXJ2aWNlIiwidW06dXNlci1tYW5hZ2VtZW50LXNlcnZpY2UiLCJhcHBzOmFwcHMtc2VydmljZSIsInNpOnNhbWwtaWRwLXNlcnZpY2UiXX0seyJmZWF0dXJlIjoiYXV0aGVudGljYXRvcnMiLCJyZXN0cmljdGlvbnMiOltdfSx7ImZlYXR1cmUiOiJkYXRhLXNvdXJjZXMiLCJyZXN0cmljdGlvbnMiOltdfSx7ImZlYXR1cmUiOiJhbGFybXMiLCJyZXN0cmljdGlvbnMiOltdfSx7ImZlYXR1cmUiOiJldmVudC1saXN0ZW5lcnMiLCJyZXN0cmljdGlvbnMiOltdfSx7ImZlYXR1cmUiOiJhY3Rpb25zIiwicmVzdHJpY3Rpb25zIjpbXX0seyJmZWF0dXJlIjoiY2xhaW1zLXByb3ZpZGVycyIsInJlc3RyaWN0aW9ucyI6W119LHsiZmVhdHVyZSI6Im1ldHJpY3MiLCJyZXN0cmljdGlvbnMiOltdfSx7ImZlYXR1cmUiOiJjbHVzdGVyIiwicmVzdHJpY3Rpb25zIjpbXX0seyJmZWF0dXJlIjoiaGFhcGkiLCJyZXN0cmljdGlvbnMiOltdfSx7ImZlYXR1cmUiOiJkYXNoYm9hcmQiLCJyZXN0cmljdGlvbnMiOltdfSx7ImZlYXR1cmUiOiJjcnlwdG8iLCJyZXN0cmljdGlvbnMiOlsiaHNtIl19LHsiZmVhdHVyZSI6InRva2VuLXByb2NlZHVyZS1wbHVnaW5zIiwicmVzdHJpY3Rpb25zIjpbXX0seyJmZWF0dXJlIjoiZGF0YWJhc2UtY2xpZW50cyIsInJlc3RyaWN0aW9ucyI6W119LHsiZmVhdHVyZSI6ImdyYXBocWwiLCJyZXN0cmljdGlvbnMiOltdfSx7ImZlYXR1cmUiOiJnZW8iLCJyZXN0cmljdGlvbnMiOltdfSx7ImZlYXR1cmUiOiJiYWNrY2hhbm5lbC1hdXRoZW50aWNhdG9ycyIsInJlc3RyaWN0aW9ucyI6W119LHsiZmVhdHVyZSI6ImZpbmFuY2lhbC1ncmFkZSIsInJlc3RyaWN0aW9ucyI6W119LHsiZmVhdHVyZSI6Im11bHRpLXRlbmFuY3kiLCJyZXN0cmljdGlvbnMiOltdfSx7ImZlYXR1cmUiOiJhcHBsaWNhdGlvbnMiLCJyZXN0cmljdGlvbnMiOlsidG9rZW4taGFuZGxlciJdfV0sImlhdCI6MTczMzk2MTYwMCwibmJmIjoxNzMzOTYxNjAwLCJleHAiOjE3NjU0OTc2MDB9.grv98NluyB-w_i-DAYSy8uJEgbdLzn4BghsOyoEQY7gsqWa9yzNoBFPATrAV9KhJtx5nmU2qWUD_dGMNDvFOzWP-la9mwo0zc2R7Np0lwCZTH1mqG8BZefN3NBX35o1dO1B_Cesb5aQm4oqyGhd_Iledvezffa6p95AQ-5H6hmiChQDnX5NJuiRY6LsERYeStv8Zxh2RB2QNKdYa1nA-2p4AmZb-Hlmk3cMJZWx0ERd4VvZ8aUVtQCJtYUOUtwfGCb1SEBj_i2nRamrpiXzmeTnH53MN6dHuJVSBZuhSdraeTiBY6vgjKMI8m_Ho5pLo_pvtH8Wbz-PwmVBoV-NI4A</license-key>
     <account-managers>
       <account-manager>
         <id>default-account-manager</id>

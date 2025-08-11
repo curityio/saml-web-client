@@ -20,14 +20,27 @@ if [ "$LICENSE_KEY" == '' ]; then
 fi
 
 #
-# Force recreation of the configuration database
+# Pull the latest Curity Docker image
 #
-rm -rf cdb && mkdir cdb
+docker pull curity.azurecr.io/curity/idsvr
+
+#
+# Build a Microsoft SQL Server Docker image
+#
+./mssql/build.sh
+if [ $? -ne 0 ]; then
+  exit 1
+fi
 
 #
 # Force recreation of database data
 #
-rm -rf data && mkdir data
+rm -rf mssql-data && mkdir mssql-data
+
+#
+# Force recreation of the configuration database
+#
+rm -rf cdb && mkdir cdb
 
 #
 # Get a 10.4 or later image for the Curity Identity Server and then run the deployment

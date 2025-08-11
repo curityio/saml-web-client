@@ -19,7 +19,7 @@ Also make sure that your local computer runs Docker, the OpenSSL tool and the jq
 
 ### Deploy the Curity Identity Server
 
-Then run the deploy script to spin up a local server instance:
+Then run the deploy script to spin up a local Curity Identity Server instance.
 
 ```bash
 export LICENSE_FILE_PATH=~/Desktop/license-trial.json
@@ -30,9 +30,15 @@ Sign in to the Admin UI at `https://localhost:6749/admin` with credentials `admi
 Use the facilities menu to export the certificate of the default signing verification key.\
 Save it to the root folder of this project with the name `default-verification-key.pem`.
 
-### Run the Web Application
+### View Stored User Accounts
 
-Next, run the web application with the following commands:
+The example deployment stores user accounts in a Microsoft SQL Server database.\
+The [Data Sources README](DATA-SOURCES.md) explains briefly how to connect to it and view user attributes.
+
+### Run the SAML Website
+
+Wait for a minute or so to ensure that the Curityy Identity Server and database are ready.\
+Then run the SAML website with the following commands:
 
 ```bash
 npm install
@@ -47,8 +53,9 @@ The app then runs a cookie-based web session and can implement authorization wit
 
 See the following related information for further details on SAML integrations:
 
-- [SAML Website Code Example](https://curity.io/resources/learn/saml-website/)
 - [Integrate a SAML Web Application](https://curity.io/resources/learn/integrate-saml-website/)
+- [SAML Website Code Example](https://curity.io/resources/learn/saml-website/)
+- [Migrating from ADFS](https://curity.io/resources/learn/migrating-from-adfs/)
 
 ## Further Information
 
