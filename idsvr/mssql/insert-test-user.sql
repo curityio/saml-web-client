@@ -1,5 +1,5 @@
 
-DECLARE @attributes VARCHAR(MAX) = '{"emails":[{"value":"demo@user.com","primary":true}],"phoneNumbers":[{"value":"07711","primary":true}],"name":{"givenName":"Demo","familyName":"User"},"agreeToTerms":"on"}'
+DECLARE @attributes VARCHAR(MAX) = '{"emails":[{"value":"demo@user.com","primary":true}],"phoneNumbers":[{"value":"07711","primary":true}],"name":{"givenName":"Demo","familyName":"User"},"agreeToTerms":"on", "region":"USA"}'
 INSERT INTO accounts(account_id, username, email, phone, attributes, active, created, updated) VALUES('812F174E-FB24-432E-ACDC-543DBF2BED77', 'demouser', 'demo@user.com', '07711', @attributes, 1, 1754898809, 1754898809)
 GO
 

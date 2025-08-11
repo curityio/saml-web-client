@@ -4,8 +4,8 @@ services:
   # The Curity Identity Server with a SAML configuration
   #
   curity-idsvr:
-    #image: curity.azurecr.io/curity/idsvr:latest
-    image: curity/idsvr-unstable:10.4.0-acd7538525
+    image: curity.azurecr.io/curity/idsvr:latest
+    #image: curity/idsvr-unstable:10.4.0-acd7538525
     hostname: idsvr
     volumes:
     - ./cdb:/opt/idsvr/var/cdb
