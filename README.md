@@ -27,8 +27,8 @@ export LICENSE_FILE_PATH=~/Desktop/license-trial.json
 ```
 
 Sign in to the Admin UI at `https://localhost:6749/admin` with credentials `admin / Password1`.\
-Use the facilities menu to export the certificate of the default signing verification key.\
-Save it to the root folder of this project with the name `default-verification-key.pem`.
+Use the facilities menu to export the certificate of the default signature verification key.\
+Save it to the root folder of this project with the name `default-signature-verification-key.pem`.
 
 ### View Stored User Accounts
 
