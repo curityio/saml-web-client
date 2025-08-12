@@ -39,11 +39,10 @@ export class SamlClient {
             entryPoint: this.configuration.samlSsoEndpoint,
             callbackUrl: this.configuration.callbackUrl,
             
-            // Details used to validate received SAML assertions
+            // Details used to process received SAML assertions
             audience: this.configuration.entityId,
-            identifierFormat: null,
-            idpIssuer: 'x',
             idpCert: this.configuration.assertionVerificationCertificate,
+            identifierFormat: null,
 
             // This example forces a login on every redirect
             forceAuthn: true,
