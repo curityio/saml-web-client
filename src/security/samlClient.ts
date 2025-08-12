@@ -16,7 +16,8 @@ export class SamlClient {
         this.configuration = configuration;
         this.startLogin = this.startLogin.bind(this);
         this.endLogin = this.endLogin.bind(this);
-        this.receiveUserAttributes = this.receiveUserAttributes.bind(this);
+        this.signOnVerify = this.signOnVerify.bind(this);
+        this.signOutVerify = this.signOutVerify.bind(this);
     }
 
     /*
@@ -39,7 +40,7 @@ export class SamlClient {
             callbackUrl: this.configuration.callbackUrl,
             
             // Details used to validate received SAML assertions
-            audience: this.configuration.entityId + 'x',
+            audience: this.configuration.entityId,
             identifierFormat: null,
             idpCert: this.configuration.assertionVerificationCertificate,
 
@@ -47,7 +48,8 @@ export class SamlClient {
             forceAuthn: true,
         };
 
-        passport.use(new Strategy(options, this.receiveUserAttributes));
+        const strategy = new Strategy(options, this.signOnVerify, this.signOutVerify);
+        passport.use(strategy as any);
         app.use(passport.initialize());
         app.use(passport.session());
     }
@@ -83,7 +85,7 @@ export class SamlClient {
     /*
      * Receive user attributes after the SAML library has validated the assertion and implement any custom validations
      */
-    private receiveUserAttributes(profile: Profile | null | undefined, done: VerifiedCallback): any {
+    private signOnVerify(profile: Profile | null | undefined, done: VerifiedCallback): any {
 
         if (!profile || !profile.getAssertion) {
             return done(new Error('An invalid SAML response was received'), {});
@@ -99,5 +101,12 @@ export class SamlClient {
         // console.log(JSON.stringify(profile.getAssertion(), null, 2));
 
         return done(null, user);
+    }
+
+    /*
+     * Default handling of logout responses
+     */
+    private signOutVerify(profile: Profile | null | undefined, done: VerifiedCallback): any {
+        return done(null, {});
     }
 }
