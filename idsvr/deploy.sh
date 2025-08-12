@@ -33,14 +33,9 @@ if [ $? -ne 0 ]; then
 fi
 
 #
-# Force recreation of database data
+# This example forces recreation of database data on every deployment
 #
-rm -rf mssql-data && mkdir mssql-data
-
-#
-# Force recreation of the configuration database
-#
-rm -rf cdb && mkdir cdb
+rm -rf mssql-data && mkdir mssql-data && chmod 777 mssql-data
 
 #
 # Get a 10.4 or later image for the Curity Identity Server and then run the deployment

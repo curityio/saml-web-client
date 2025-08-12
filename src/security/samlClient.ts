@@ -1,7 +1,7 @@
 
 import {Application, NextFunction, Request, Response} from 'express';
 import passport, {AuthenticateOptions} from 'passport';
-import {Profile, SamlConfig, Strategy, VerifiedCallback} from 'passport-saml';
+import {Profile, SamlConfig, Strategy, VerifiedCallback} from '@node-saml/passport-saml';
 import {Configuration} from '../configuration';
 
 /*
@@ -39,9 +39,9 @@ export class SamlClient {
             callbackUrl: this.configuration.callbackUrl,
             
             // Details used to validate received SAML assertions
-            audience: this.configuration.entityId,
+            audience: this.configuration.entityId + 'x',
             identifierFormat: null,
-            cert: this.configuration.assertionVerificationCertificate,
+            idpCert: this.configuration.assertionVerificationCertificate,
 
             // This example forces a login on every redirect
             forceAuthn: true,

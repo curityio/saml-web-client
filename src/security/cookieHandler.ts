@@ -21,7 +21,7 @@ export class CookieHandler {
         // Use the lax setting since cookies so that cookies stick when set in a redirect response
         const cookieOptions: CookieOptions = {
             httpOnly: true,
-            sameSite: 'lax',
+            sameSite: 'strict',
             secure: this.configuration.isHttps(),
             path: '/',
             maxAge: sessionTimeInMilliseconds,
