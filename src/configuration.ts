@@ -9,7 +9,6 @@ export class Configuration {
     public callbackUrl: string;
     public entityId: string;
     public cookieSecret: string;
-    public assertionVerificationCertificate: string;
 
     public constructor() {
         this.port = this.getValue('PORT');
@@ -18,7 +17,6 @@ export class Configuration {
         this.entityId = this.getValue('ENTITY_ID');
         this.callbackUrl = this.getValue('CALLBACK_URL');
         this.cookieSecret = this.getValue('COOKIE_SECRET');
-        this.assertionVerificationCertificate = this.getValue('ASSERTION_VERIFICATION_CERTIFICATE');
     }
 
     public isHttps(): boolean {

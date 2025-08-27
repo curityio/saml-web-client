@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-default-signature-verification-key.pem
 download
 mssql-data
 cdb

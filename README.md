@@ -27,8 +27,8 @@ export LICENSE_FILE_PATH=~/Desktop/license-trial.json
 ```
 
 Sign in to the Admin UI at `https://localhost:6749/admin` with credentials `admin / Password1`.\
-Use the facilities menu to export the certificate of the default signature verification key.\
-Save it to the root folder of this project with the name `default-signature-verification-key.pem`.
+Use the facilities menu to view the certificate of the default signature verification key.\
+The website downloads this certificate from the SAML metadata endpoint to validate SAML assertions.
 
 ### View Stored User Accounts
 

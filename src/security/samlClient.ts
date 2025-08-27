@@ -1,7 +1,8 @@
 
+import {Profile, SamlConfig, Strategy, VerifiedCallback} from '@node-saml/passport-saml';
 import {Application, NextFunction, Request, Response} from 'express';
 import passport, {AuthenticateOptions} from 'passport';
-import {Profile, SamlConfig, Strategy, VerifiedCallback} from '@node-saml/passport-saml';
+import convert from 'xml-js';
 import {Configuration} from '../configuration';
 
 /*
@@ -16,6 +17,7 @@ export class SamlClient {
         this.configuration = configuration;
         this.startLogin = this.startLogin.bind(this);
         this.endLogin = this.endLogin.bind(this);
+        this.getIdpCert = this.getIdpCert.bind(this);
         this.signOnVerify = this.signOnVerify.bind(this);
         this.signOutVerify = this.signOutVerify.bind(this);
     }
@@ -31,18 +33,18 @@ export class SamlClient {
         passport.deserializeUser((user: any, done) => {
             done(null, user);
         });
-
+        
         const options: SamlConfig = {
             
             // The client details
             issuer: this.configuration.entityId,
             entryPoint: this.configuration.samlSsoEndpoint,
             callbackUrl: this.configuration.callbackUrl,
-            
-            // Details used to process received SAML assertions
+
+            // Set details to validate received SAML assertions
             audience: this.configuration.entityId,
-            idpCert: this.configuration.assertionVerificationCertificate,
             identifierFormat: null,
+            idpCert: this.getIdpCert,
 
             // This example forces a login on every redirect
             forceAuthn: true,
@@ -80,6 +82,47 @@ export class SamlClient {
         
         const middleware = passport.authenticate('saml', options);
         middleware(request, response, next);
+    }
+
+    /*
+     * The node SAML library uses old callback functions and calls promisify on this function.
+     * To avoid a warning, do the async download in a separate async function.
+     */
+    private getIdpCert(setPublicKey: (err: Error | null, publicCert?: string | string[]) => void) {
+                
+        (async () => {
+        
+            try {
+                const cert = await this.downloadAssertionSigningCertificate();
+                setPublicKey(null, cert);
+
+            } catch (e: any) {
+                setPublicKey(e);
+            };
+
+        })();
+    }
+
+    /*
+     * Do the work of downloading the certificate that corresponds to the SAML assertion signing key
+     */
+    private async downloadAssertionSigningCertificate(): Promise<string> {
+
+        const response = await fetch(this.configuration.samlMetadataEndpoint);
+        if (response.status !== 200) {
+            throw new Error(`Status ${response.status} downloading SAML metadata`);
+        }
+        
+        const xmlText = await response.text();
+        var json = convert.xml2json(xmlText, {compact: true});
+        
+        var data = JSON.parse(json);
+        const cert = data.EntityDescriptor?.IDPSSODescriptor?.KeyDescriptor?.X509Data?.X509Certificate?._text;
+        if (!cert) {
+            throw new Error('No public key certificate was found in the SAML metadata');
+        }
+
+        return '-----BEGIN CERTIFICATE-----\n' + cert.match(/.{1,64}/g).join('\n') + '\n-----END CERTIFICATE-----';
     }
 
     /*

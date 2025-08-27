@@ -33,6 +33,11 @@ if [ $? -ne 0 ]; then
 fi
 
 #
+# This example forces recreation of the configuration database on every deployment
+#
+rm -rf cdb && mkdir cdb && chmod 777 cdb
+
+#
 # This example forces recreation of database data on every deployment
 #
 rm -rf mssql-data && mkdir mssql-data && chmod 777 mssql-data
