@@ -1,0 +1,30 @@
+services:
+
+  #
+  # The Curity Identity Server with a SAML configuration
+  #
+  curity-idsvr:
+    image: curity.azurecr.io/curity/idsvr:latest
+    hostname: idsvr
+    volumes:
+    - ./curity-config.xml:/opt/idsvr/etc/init/curity-config.xml
+    ports:
+    - 6749:6749
+    - 8443:8443
+    environment:
+      ADMIN: 'true'
+      LICENSE_KEY: '${LICENSE_KEY}'
+      LOGGING_LEVEL: 'INFO'
+
+  #
+  # A SQL database that contains user account with user attribute issued to SAML assertions
+  #
+  curity-data:
+    image: curity_mssql:1.0.0
+    hostname: dbserver
+    volumes:
+    - ./mssql-data:/var/opt/mssql/data
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: Password1
+      MSSQL_COLLATION: Latin1_General_100_CI_AS_SC_UTF8

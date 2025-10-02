@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>SAML 2.0 Web Client</title>
+
+		<link href='bootstrap.min.css' rel='stylesheet' />
+		<link href='app.css' rel='stylesheet' />
+       
+	</head>
+	<body>
+		<div class='container spacer'>
+			
+			<%- include("./partials/title"); -%> 
+
+			<% if (model.errorMessage) { %>
+				<%- include("./partials/error"); -%> 
+			<% } %>
+			
+			<% if (!model.isAuthenticated) { %>
+				<%- include("./partials/unauthenticated"); -%>
+			<% } %>
+			
+			<% if (model.isAuthenticated) { %>
+				<%- include("./partials/authenticated"); -%> 
+			<% } %>
+
+		</div>
+	</body>
+</html>
